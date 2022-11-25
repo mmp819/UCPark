@@ -6,4 +6,4 @@
 .settings/
 
 # Artefactos de Maven
-target/
+/target/

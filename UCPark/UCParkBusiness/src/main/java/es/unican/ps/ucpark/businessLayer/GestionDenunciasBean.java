@@ -50,7 +50,7 @@ public class GestionDenunciasBean implements IDenunciasAgentesLocal, IDenunciasA
 		Estacionamiento ultimoEstacionamiento = vehiculo.getEstacionamientoEnVigor();
 		
 		if (ultimoEstacionamiento == null) {
-			List<Estacionamiento> historico = vehiculo.getHistoricoEstacionammientos();
+			List<Estacionamiento> historico = vehiculo.getHistoricoEstacionamientos();
 			
 			if (!historico.isEmpty()) {
 				ultimoEstacionamiento = historico.get(historico.size() - 1);
