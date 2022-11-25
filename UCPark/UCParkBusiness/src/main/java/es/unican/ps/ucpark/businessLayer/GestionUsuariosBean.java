@@ -1,11 +1,16 @@
 package es.unican.ps.ucpark.businessLayer;
 
-import es.unican.ps.ucpark.daoLayer.IUsuariosDAO;
+import es.unican.ps.ucpark.daoLayer.IUsuariosDAOLocal;
 import es.unican.ps.ucpark.domain.Usuario;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 
-public class GestionUsuarios implements IGestionUsuarios {
+@Stateless
+public class GestionUsuariosBean implements IGestionUsuariosLocal, 
+	IGestionUsuariosRemote {
 	
-	private IUsuariosDAO usuariosDAO;
+	@EJB
+	private IUsuariosDAOLocal usuariosDAO;
 	
 	/**
 	 * Crea un nuevo usuario.

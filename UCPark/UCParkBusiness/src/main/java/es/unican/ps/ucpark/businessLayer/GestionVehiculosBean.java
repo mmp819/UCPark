@@ -2,19 +2,25 @@ package es.unican.ps.ucpark.businessLayer;
 
 import java.util.List;
 
-import es.unican.ps.ucpark.daoLayer.IUsuariosDAO;
-import es.unican.ps.ucpark.daoLayer.IVehiculosDAO;
+import es.unican.ps.ucpark.daoLayer.IUsuariosDAOLocal;
+import es.unican.ps.ucpark.daoLayer.IVehiculosDAOLocal;
 import es.unican.ps.ucpark.domain.Usuario;
 import es.unican.ps.ucpark.domain.Vehiculo;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 
-public class GestionVehiculos implements IGestionVehiculos, IConsultaVehiculos {
+@Stateless
+public class GestionVehiculosBean implements IGestionVehiculosLocal, 
+	IConsultaVehiculosRemote {
 	
-	private IUsuariosDAO usuariosDAO;
-	private IVehiculosDAO vehiculosDAO;
+	@EJB
+	private IUsuariosDAOLocal usuariosDAO;
+	
+	@EJB
+	private IVehiculosDAOLocal vehiculosDAO;
 	
 	
-	public GestionVehiculos(IUsuariosDAO usuariosDAO) {
-		usuariosDAO = this.usuariosDAO;
+	public GestionVehiculosBean() {
 	}
 	
 	/**

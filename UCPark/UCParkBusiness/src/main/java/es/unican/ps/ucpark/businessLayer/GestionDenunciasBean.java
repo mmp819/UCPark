@@ -3,24 +3,28 @@ package es.unican.ps.ucpark.businessLayer;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.unican.ps.ucpark.daoLayer.IDenunciasDAO;
-import es.unican.ps.ucpark.daoLayer.IEstacionamientosDAO;
-import es.unican.ps.ucpark.daoLayer.IVehiculosDAO;
+import es.unican.ps.ucpark.daoLayer.IDenunciasDAOLocal;
+import es.unican.ps.ucpark.daoLayer.IVehiculosDAOLocal;
 import es.unican.ps.ucpark.domain.Denuncia;
 import es.unican.ps.ucpark.domain.Estacionamiento;
 import es.unican.ps.ucpark.domain.Usuario;
 import es.unican.ps.ucpark.domain.Vehiculo;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 
-public class GestionDenuncias implements IDenunciasAgentes, IDenunciasUsuarios,
-	IConsultaDenuncias {
+@Stateless
+public class GestionDenunciasBean implements IDenunciasAgentesLocal, IDenunciasAgentesRemote,
+	IDenunciasUsuariosLocal, IDenunciasUsuariosRemote, IConsultaDenunciasLocal,
+	IConsultaDenunciasRemote {
 	
-	private IDenunciasDAO denunciasDAO;
-	private IVehiculosDAO vehiculosDAO;
+	@EJB
+	private IDenunciasDAOLocal denunciasDAO;
 	
-	public GestionDenuncias(IDenunciasDAO denunciasDAO, 
-			IEstacionamientosDAO estacionamientosDAO, IVehiculosDAO vehiculosDAO) {
-		this.denunciasDAO = denunciasDAO;
-		this.vehiculosDAO = vehiculosDAO;
+	@EJB
+	private IVehiculosDAOLocal vehiculosDAO;
+	
+	
+	public GestionDenunciasBean() {
 	}
 	
 
