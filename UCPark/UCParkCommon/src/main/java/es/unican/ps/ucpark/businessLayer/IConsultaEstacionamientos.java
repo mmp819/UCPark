@@ -21,7 +21,7 @@ public interface IConsultaEstacionamientos {
 	 * @param idUsuario ID del usuario a comprobar.
 	 * @return estacionamientos en vigor para el usuario especificado.
 	 */
-	public List<Estacionamiento> estacionamientoEnVigorDeUsuario(String idUsuario);
+	public List<Estacionamiento> estacionamientosEnVigorDeUsuario(int idUsuario);
 	
 	/**
 	 * Obtiene el historico de estacionamientos para un vehiculo.
@@ -37,5 +37,5 @@ public interface IConsultaEstacionamientos {
 	 * @param idUsuario ID del usuario del que se quiere obtener el historico.
 	 * @return historico de estacionamientos para el usuario indicado.
 	 */
-	public List<Estacionamiento> historicoEstacionamientosUsuario(String idUsuario);
+	public List<Estacionamiento> historicoEstacionamientosUsuario(int idUsuario);
 }
