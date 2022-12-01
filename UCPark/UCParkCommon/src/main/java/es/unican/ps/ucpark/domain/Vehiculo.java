@@ -8,6 +8,7 @@ public class Vehiculo {
 	private List<Estacionamiento> historicoEstacionamientos;
 	private List<Denuncia> historicoDenuncias;
 	private Usuario propietario;
+	private String matricula;
 	
 	public Vehiculo() {
 		
@@ -17,7 +18,11 @@ public class Vehiculo {
 		return this.estacionamientoEnVigor;
 	}
 	
-	public List<Estacionamiento> getHistoricoEstacionammientos() {
+	public void setEstacionamientoEnVigor(Estacionamiento estacionamiento) {
+		this.estacionamientoEnVigor = estacionamiento;
+	}
+	
+	public List<Estacionamiento> getHistoricoEstacionamientos() {
 		return this.historicoEstacionamientos;
 	}
 	
@@ -28,4 +33,9 @@ public class Vehiculo {
 	public Usuario getPropietario() {
 		return this.propietario;
 	}
+	
+	public String getMatricula() {
+		return this.matricula;
+	}
+	
 }
