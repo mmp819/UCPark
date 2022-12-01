@@ -18,6 +18,10 @@ public class Vehiculo {
 		return this.estacionamientoEnVigor;
 	}
 	
+	public void setEstacionamientoEnVigor(Estacionamiento estacionamiento) {
+		this.estacionamientoEnVigor = estacionamiento;
+	}
+	
 	public List<Estacionamiento> getHistoricoEstacionamientos() {
 		return this.historicoEstacionamientos;
 	}
@@ -33,4 +37,5 @@ public class Vehiculo {
 	public String getMatricula() {
 		return this.matricula;
 	}
+	
 }
