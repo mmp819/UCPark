@@ -1,6 +1,7 @@
 package es.unican.ps.ucpark.businessLayer;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,12 @@ import es.unican.ps.ucpark.daoLayer.IVehiculosDAOLocal;
 import es.unican.ps.ucpark.domain.Estacionamiento;
 import es.unican.ps.ucpark.domain.Usuario;
 import es.unican.ps.ucpark.domain.Vehiculo;
+import jakarta.annotation.Resource;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
+import jakarta.ejb.Timeout;
+import jakarta.ejb.Timer;
+import jakarta.ejb.TimerService;
 
 @Stateless
 public class GestionEstacionamientosBean implements IConsultaEstacionamientosLocal, 
@@ -30,6 +35,9 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 	@EJB
 	IUsuariosDAOLocal usuariosDAO;
 	
+	@Resource
+	private TimerService timerService;
+	
 	public GestionEstacionamientosBean() {
 		
 	}
@@ -45,6 +53,12 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		Estacionamiento estacionamiento = new Estacionamiento(
 				(double)minutos * PRECIO_MINUTO, minutos, LocalDateTime.now(),
 				vehiculo);
+		
+		// Programacion de evento para eliminar estacionamiento en vigor
+		LocalDateTime horaFin = estacionamiento.getHoraInicio().plusMinutes(minutos);
+		
+		timerService.createSingleActionTimer(horaFin.atZone(
+				ZoneId.systemDefault()).toInstant().toEpochMilli(), null);
 		
 		vehiculo.getHistoricoEstacionamientos().add(estacionamiento);
 		vehiculosDAO.modificaVehiculo(vehiculo);
@@ -126,5 +140,16 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		}
 		
 		return historico;
+	}
+	
+	@Timeout
+	public void finalizarEstacionamiento(Timer timer) {
+		Vehiculo vehiculo = (Vehiculo) timer.getInfo();
+		Estacionamiento estacionamientoEnVigor = vehiculo.getEstacionamientoEnVigor();
+		
+		vehiculo.getHistoricoEstacionamientos().add(estacionamientoEnVigor);
+		vehiculo.setEstacionamientoEnVigor(null);
+		
+		vehiculosDAO.modificaVehiculo(vehiculo);
 	}
 }
