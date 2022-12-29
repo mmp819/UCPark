@@ -2,11 +2,24 @@ package es.unican.ps.ucpark.domain;
 
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+
+@Entity
 public class Vehiculo {
 
+	@OneToOne
+	@JoinColumn(name="est_vig_fk")
 	private Estacionamiento estacionamientoEnVigor;
+	@OneToMany(mappedBy="vehiculoEstacionado")
 	private List<Estacionamiento> historicoEstacionamientos;
+	@OneToMany(mappedBy="vehiculoDenunciado")
 	private List<Denuncia> historicoDenuncias;
+	@ManyToOne
+	@JoinColumn(name="prop_fk")
 	private Usuario propietario;
 	private String matricula;
 	

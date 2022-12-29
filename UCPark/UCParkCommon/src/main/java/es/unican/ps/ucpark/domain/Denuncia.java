@@ -3,10 +3,11 @@ package es.unican.ps.ucpark.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
 @Entity
@@ -14,20 +15,24 @@ public class Denuncia implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private int idDenuncia;
+	private int id;
 	private Date fecha;
 	private double importe;
 	private String causa;
-	
-	@Column(name="vehDenun")
+	@ManyToOne
+	@JoinColumn(name="vclo_fk")
 	private Vehiculo vehiculoDenunciado;
 	
-	public int getIdDenuncia() {
-		return idDenuncia;
+	public Denuncia() {
+		
 	}
 	
-	public void setIdDenuncia(int idDenuncia) {
-		this.idDenuncia = idDenuncia;
+	public int getIdDenuncia() {
+		return id;
+	}
+	
+	public void setIdDenuncia(int id) {
+		this.id = id;
 	}
 	
 	public Date fecha() {
