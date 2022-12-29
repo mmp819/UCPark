@@ -1,15 +1,25 @@
 package es.unican.ps.ucpark.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
-public class Denuncia {
+@SuppressWarnings("serial")
+@Entity
+public class Denuncia implements Serializable {
 	
+	@Id
+	@GeneratedValue
 	private int idDenuncia;
 	private Date fecha;
 	private double importe;
 	private String causa;
 	
+	@Column(name="vehDenun")
 	private Vehiculo vehiculoDenunciado;
 	
 	public int getIdDenuncia() {
