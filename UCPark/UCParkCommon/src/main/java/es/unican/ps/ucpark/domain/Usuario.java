@@ -14,6 +14,7 @@ public class Usuario {
 	@OneToMany
 	@JoinColumn(name="user_fk")
 	private List<MedioPago> mediosPago;
+	private String email;
 	
 	public Usuario() {
 		
@@ -49,6 +50,14 @@ public class Usuario {
 
 	public void setVehiculos(List<Vehiculo> vehiculos) {
 		this.vehiculos = vehiculos;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

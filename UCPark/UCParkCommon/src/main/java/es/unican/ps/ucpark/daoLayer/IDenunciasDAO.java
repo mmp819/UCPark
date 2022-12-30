@@ -44,5 +44,5 @@ public interface IDenunciasDAO {
 	 * @return denuncia cuyo ID coincide con el indicado.
 	 *         null si no existe ninguna denuncia que se corresponda con el ID.
 	 */
-	public Denuncia denunciaPorId(String idDenuncia);
+	public Denuncia denunciaPorId(int idDenuncia);
 }

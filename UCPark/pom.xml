@@ -29,5 +29,6 @@
   <modules>
   	<module>UCParkBusiness</module>
   	<module>UCParkCommon</module>
+  	<module>UCParkDAO</module>
   </modules>
 </project>

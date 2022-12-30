@@ -5,12 +5,7 @@
     <artifactId>UCPark</artifactId>
     <version>1.0</version>
   </parent>
-  <artifactId>UCParkBusiness</artifactId>
-  
-  <properties>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.source>11</maven.compiler.source>
-  </properties>
+  <artifactId>UCParkDAO</artifactId>
   
   <dependencies>
     <dependency>
@@ -19,4 +14,9 @@
       <version>1.0</version>
     </dependency>
   </dependencies>
+  
+  <properties>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+  </properties>
 </project>

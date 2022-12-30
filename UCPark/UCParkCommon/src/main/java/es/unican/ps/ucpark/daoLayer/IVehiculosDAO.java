@@ -19,7 +19,7 @@ public interface IVehiculosDAO {
 	 * 
 	 * @return lista de vehiculos registrados.
 	 */
-	public List<Vehiculo> vehiuclos();
+	public List<Vehiculo> vehiculos();
 	
 	/**
 	 * Modifica un vehiculo concreto.
