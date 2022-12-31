@@ -42,12 +42,24 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		
 	}
 	
+	/**
+	 * Constructor util para pruebas unitarias.
+	 * 
+	 * @param estacionamientosDAO DAO de estacionamientos.
+	 * @param vehiculosDAO DAO de vehiculos.
+	 */
+	public GestionEstacionamientosBean(IEstacionamientosDAOLocal estacionamientosDAO,
+			IVehiculosDAOLocal vehiculosDAO) {
+		this.estacionamientosDAO = estacionamientosDAO;
+		this.vehiculosDAO = vehiculosDAO;
+	}
+	
 	public Estacionamiento creaEstacionamiento(Vehiculo vehiculo, int minutos) 
-	throws OperacionNoValida {
+			throws OperacionNoValida {
 		
-		if (vehiculosDAO.vehiculoPorMatricula(vehiculo.getMatricula()) == null) {
-			throw new OperacionNoValida("No existe un vehiculo con la matri" +
-					"cula especificada.");
+		if (vehiculosDAO.vehiculoPorMatricula(vehiculo.getMatricula()).
+				getEstacionamientoEnVigor() != null) {
+			throw new OperacionNoValida("Vehiculo con estacionamiento en vigor.");
 		}
 		
 		Estacionamiento estacionamiento = new Estacionamiento(
@@ -66,7 +78,7 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 	}
 	
 	public Estacionamiento ampliaEstacionamiento(Estacionamiento estacionamiento,
-			int minutos) {
+			int minutos) throws OperacionNoValida {
 		
 		int minutosAcumulados = estacionamiento.getMinutos() + minutos;
 		
@@ -76,6 +88,7 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		}
 			
 		estacionamiento.setMinutos(minutosAcumulados);
+		estacionamiento.setImporte(minutosAcumulados * PRECIO_MINUTO);
 		return estacionamientosDAO.modificaEstacionamiento(estacionamiento);
 	}
 	

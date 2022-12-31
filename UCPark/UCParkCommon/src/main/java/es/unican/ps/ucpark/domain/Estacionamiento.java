@@ -7,12 +7,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.GenerationType;
 
 @Entity
 public class Estacionamiento {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int id;
 	private double importe;
 	private int minutos;
@@ -72,4 +73,24 @@ public class Estacionamiento {
 	public void setVehiculoEstacionado(Vehiculo vehiculoEstacionado) {
 		this.vehiculoEstacionado = vehiculoEstacionado;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Estacionamiento other = (Estacionamiento) obj;
+		if (other.getVehiculoEstacionado() == null || other.getHoraInicio() == null) {
+				return false;
+		} else if (other.getId() == id && other.getImporte() == importe
+				&& other.getHoraInicio().equals(horaInicio) && other.minutos 
+				== minutos && other.getVehiculoEstacionado() == vehiculoEstacionado) { 
+			// Redundante. Teoricamente, valdria con el ID
+			return true;
+		}
+		return false;
+	}    
 }

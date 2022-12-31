@@ -31,29 +31,37 @@ public class Vehiculo {
 	public Vehiculo() {
 		
 	}
-	
+
 	public Estacionamiento getEstacionamientoEnVigor() {
-		return this.estacionamientoEnVigor;
+		return estacionamientoEnVigor;
 	}
-	
-	public void setEstacionamientoEnVigor(Estacionamiento estacionamiento) {
-		this.estacionamientoEnVigor = estacionamiento;
+
+	public void setEstacionamientoEnVigor(Estacionamiento estacionamientoEnVigor) {
+		this.estacionamientoEnVigor = estacionamientoEnVigor;
 	}
-	
+
 	public List<Estacionamiento> getHistoricoEstacionamientos() {
-		return this.historicoEstacionamientos;
+		return historicoEstacionamientos;
 	}
-	
+
+	public void setHistoricoEstacionamientos(List<Estacionamiento> historicoEstacionamientos) {
+		this.historicoEstacionamientos = historicoEstacionamientos;
+	}
+
 	public List<Denuncia> getHistoricoDenuncias() {
-		return this.historicoDenuncias;
+		return historicoDenuncias;
 	}
-	
+
+	public void setHistoricoDenuncias(List<Denuncia> historicoDenuncias) {
+		this.historicoDenuncias = historicoDenuncias;
+	}
+
 	public Usuario getPropietario() {
-		return this.propietario;
+		return propietario;
 	}
-	
-	public String getMatricula() {
-		return this.matricula;
+
+	public void setPropietario(Usuario propietario) {
+		this.propietario = propietario;
 	}
 
 	public int getId() {
@@ -63,4 +71,29 @@ public class Vehiculo {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vehiculo other = (Vehiculo) obj;
+		if (matricula == null) {
+			if (other.matricula != null)
+				return false;
+		} else if (!matricula.equals(other.matricula))
+			return false;
+		return true;
+	}   
 }

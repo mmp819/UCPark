@@ -10,7 +10,7 @@ import jakarta.persistence.PersistenceException;
 import jakarta.persistence.Query;
 
 @Stateless
-public class DatosDenuncias implements IDenunciasDAORemote {
+public class DatosDenuncias implements IDenunciasDAOLocal {
 
 	@PersistenceContext(unitName="UCParkPU")
 	private EntityManager em;

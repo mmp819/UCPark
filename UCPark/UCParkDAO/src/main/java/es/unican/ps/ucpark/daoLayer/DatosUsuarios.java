@@ -11,7 +11,7 @@ import jakarta.persistence.PersistenceException;
 import jakarta.persistence.Query;
 
 @Stateless
-public class DatosUsuarios implements IUsuariosDAORemote {
+public class DatosUsuarios implements IUsuariosDAOLocal {
 
 	@PersistenceContext(unitName="UCParkPU")
 	private EntityManager em;
