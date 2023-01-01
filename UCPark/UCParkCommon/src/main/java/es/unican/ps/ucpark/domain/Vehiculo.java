@@ -1,35 +1,67 @@
 package es.unican.ps.ucpark.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
+@SuppressWarnings("serial")
 @Entity
-public class Vehiculo {
+public class Vehiculo implements Serializable {
 
+	@Id
+	private String matricula;
+	private String marca;
+	private String modelo;
 	@OneToOne
 	@JoinColumn(name="est_vig_fk")
 	private Estacionamiento estacionamientoEnVigor;
 	@OneToMany(mappedBy="vehiculoEstacionado")
 	private List<Estacionamiento> historicoEstacionamientos;
 	@OneToMany(mappedBy="vehiculoDenunciado")
-	private List<Denuncia> historicoDenuncias;
+	private List<Denuncia> denuncias;
 	@ManyToOne
 	@JoinColumn(name="prop_fk")
 	private Usuario propietario;
-	@Id
-	@GeneratedValue
-	private int id;
-	private String matricula;
 	
+	/**
+	 * Constructor por defecto.
+	 */
 	public Vehiculo() {
 		
+	}
+
+	/*
+	 * Getters & Setters.
+	 */
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
 	}
 
 	public Estacionamiento getEstacionamientoEnVigor() {
@@ -48,12 +80,12 @@ public class Vehiculo {
 		this.historicoEstacionamientos = historicoEstacionamientos;
 	}
 
-	public List<Denuncia> getHistoricoDenuncias() {
-		return historicoDenuncias;
+	public List<Denuncia> getDenuncias() {
+		return denuncias;
 	}
 
-	public void setHistoricoDenuncias(List<Denuncia> historicoDenuncias) {
-		this.historicoDenuncias = historicoDenuncias;
+	public void setDenuncias(List<Denuncia> denuncias) {
+		this.denuncias = denuncias;
 	}
 
 	public Usuario getPropietario() {
@@ -62,23 +94,7 @@ public class Vehiculo {
 
 	public void setPropietario(Usuario propietario) {
 		this.propietario = propietario;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
+	}   
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -95,5 +111,5 @@ public class Vehiculo {
 		} else if (!matricula.equals(other.matricula))
 			return false;
 		return true;
-	}   
+	}
 }

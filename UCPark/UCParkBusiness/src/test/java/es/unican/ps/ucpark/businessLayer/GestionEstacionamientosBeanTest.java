@@ -61,12 +61,11 @@ public class GestionEstacionamientosBeanTest {
 	public void testAmpliaEstacionamiento() {
 		// Crear estacionamientos o vehiculos necesarios para la prueba.
 		Vehiculo v1 = new Vehiculo();
-		v1.setId(1);
 		v1.setMatricula("1234ABC");	
 		v1.setPropietario(new Usuario());
 		v1.setHistoricoEstacionamientos(new ArrayList<Estacionamiento>());
 		v1.setEstacionamientoEnVigor(null);
-		v1.setHistoricoDenuncias(new ArrayList<Denuncia>());
+		v1.setDenuncias(new ArrayList<Denuncia>());
 		
 		Estacionamiento e1 = new Estacionamiento();
 		e1.setId(1);

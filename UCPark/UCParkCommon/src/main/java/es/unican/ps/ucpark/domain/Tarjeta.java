@@ -4,8 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+/**
+ * Clase que representa un medio de pago de tipo 'Tarjeta'.
+ * 
+ * @author Mario Martin Perez
+ */
+@SuppressWarnings("serial")
 @Entity
-public class Tarjeta {
+public class Tarjeta extends MedioPago {
 
 	@Id
 	@GeneratedValue
@@ -14,10 +20,17 @@ public class Tarjeta {
 	private String cvc;
 	private String titular;
 	
+	/**
+	 * Constructor por defecto.
+	 */
 	public Tarjeta() {
 		
 	}
 
+	/*
+	 * Getters & Setters.
+	 */
+	
 	public int getId() {
 		return id;
 	}
@@ -49,4 +62,19 @@ public class Tarjeta {
 	public void setTitular(String titular) {
 		this.titular = titular;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tarjeta other = (Tarjeta) obj;
+		if (other.getNumero().equals(this.numero)) {
+			return true;
+		}
+		return false;
+	}  
 }

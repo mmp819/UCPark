@@ -38,6 +38,9 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 	@Resource
 	private TimerService timerService;
 	
+	/**
+	 * Constructor por defecto.
+	 */
 	public GestionEstacionamientosBean() {
 		
 	}
@@ -54,11 +57,11 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		this.vehiculosDAO = vehiculosDAO;
 	}
 	
+	@Override
 	public Estacionamiento creaEstacionamiento(Vehiculo vehiculo, int minutos) 
 			throws OperacionNoValida {
 		
-		if (vehiculosDAO.vehiculoPorMatricula(vehiculo.getMatricula()).
-				getEstacionamientoEnVigor() != null) {
+		if (vehiculo.getEstacionamientoEnVigor() != null) {
 			throw new OperacionNoValida("Vehiculo con estacionamiento en vigor.");
 		}
 		
@@ -77,6 +80,7 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		return estacionamientosDAO.creaEstacionamiento(estacionamiento);
 	}
 	
+	@Override
 	public Estacionamiento ampliaEstacionamiento(Estacionamiento estacionamiento,
 			int minutos) throws OperacionNoValida {
 		
@@ -92,6 +96,7 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		return estacionamientosDAO.modificaEstacionamiento(estacionamiento);
 	}
 	
+	@Override
 	public Estacionamiento estacionamientoEnVigorDeVehiculo(String matricula) {
 		
 		Vehiculo vehiculo = vehiculosDAO.vehiculoPorMatricula(matricula);
@@ -104,12 +109,13 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		return vehiculo.getEstacionamientoEnVigor();
 	}
 
-	public List<Estacionamiento> estacionamientosEnVigorDeUsuario(int idUsuario) {
+	@Override
+	public List<Estacionamiento> estacionamientosEnVigorDeUsuario(String email) {
 		
-		Usuario usuario = usuariosDAO.usuarioPorId(idUsuario);
+		Usuario usuario = usuariosDAO.usuarioPorEmail(email);
 		
 		if (usuario == null) {
-			throw new OperacionNoValida("No existe un usuario con el ID" +
+			throw new OperacionNoValida("No existe un usuario con el email" +
 					" especificado.");
 		}
 		
@@ -126,6 +132,7 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		return estacionamientosEnVigor;
 	}
 	
+	@Override
 	public List<Estacionamiento> historicoEstacionamientosVehiculo(String matricula) {
 		
 		Vehiculo vehiculo = vehiculosDAO.vehiculoPorMatricula(matricula);
@@ -138,11 +145,12 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		return vehiculo.getHistoricoEstacionamientos();
 	}
 	
-	public List<Estacionamiento> historicoEstacionamientosUsuario(int idUsuario) {
-		Usuario usuario = usuariosDAO.usuarioPorId(idUsuario);
+	@Override
+	public List<Estacionamiento> historicoEstacionamientosUsuario(String email) {
+		Usuario usuario = usuariosDAO.usuarioPorEmail(email);
 		
 		if (usuario == null) {
-			throw new OperacionNoValida("No existe un usuario con el ID" +
+			throw new OperacionNoValida("No existe un usuario con el email" +
 					" especificado.");
 		}
 		

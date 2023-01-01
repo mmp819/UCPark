@@ -9,6 +9,11 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.Query;
 
+/**
+ * DAO para la manipulacion de Denuncias.
+ * 
+ * @author Mario Martin Perez.
+ */
 @Stateless
 public class DatosDenuncias implements IDenunciasDAOLocal {
 

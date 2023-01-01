@@ -9,11 +9,32 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.Query;
 
+/**
+ * DAO para la manipulacion de Estacionamientos.
+ * 
+ * @author Mario Martin Perez.
+ */
 @Stateless
 public class DatosEstacionamientos implements IEstacionamientosDAOLocal{
 
 	@PersistenceContext(unitName="UCParkPU")
 	private EntityManager em;
+	
+	/**
+	 * Constructor por defecto.
+	 */
+	public DatosEstacionamientos() {
+		
+	}
+	
+	/**
+	 * Constructor util para el desarrollo de pruebas unitarias.
+	 * 
+	 * @param em Entity Manager.
+	 */
+	public DatosEstacionamientos(EntityManager em) {
+		this.em = em;
+	}
 	
 	@Override
 	public Estacionamiento creaEstacionamiento(Estacionamiento estacionamiento) {

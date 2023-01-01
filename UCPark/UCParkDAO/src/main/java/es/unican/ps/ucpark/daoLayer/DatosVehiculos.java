@@ -1,6 +1,5 @@
 package es.unican.ps.ucpark.daoLayer;
 
-import java.util.Iterator;
 import java.util.List;
 
 import es.unican.ps.ucpark.domain.Vehiculo;
@@ -10,6 +9,11 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.Query;
 
+/**
+ * DAO para la manipulacion de Vehiculos.
+ * 
+ * @author Mario Martin Perez.
+ */
 @Stateless
 public class DatosVehiculos implements IVehiculosDAOLocal {
 	
@@ -66,20 +70,7 @@ public class DatosVehiculos implements IVehiculosDAOLocal {
 	
 	@Override
 	public Vehiculo vehiculoPorMatricula(String matricula) {
-		List<Vehiculo> vehiculos = vehiculos();
-		Iterator<Vehiculo> iter = vehiculos.iterator();
-		
-		boolean encontrado = false;
-		Vehiculo aux = null;
-		
-		while (iter.hasNext() && !encontrado) {
-			aux = iter.next();
-			if (aux.getMatricula().equals(matricula)) {
-				encontrado = true;
-			}
-		}
-		
-		return aux;
+		return em.find(Vehiculo.class, matricula);
 	}
 
 }

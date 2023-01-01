@@ -7,11 +7,11 @@ import es.unican.ps.ucpark.domain.Vehiculo;
 public interface IConsultaVehiculos {
 
 	/**
-	 * Obtiene los vehiculos registrados para un usuario determinado.
+	 * Consulta vehiculos registrados a nombre de un usuario concreto.
 	 * 
-	 * @param idUsuario ID del usuario de interes.
-	 * @return vehiculos registrados para el usuario cuyo ID se pasa como parametro.
+	 * @param email Email del usuario a consultar.
+	 * @return lista de vehiculos registrados a nombre del usuario especificado.
 	 */
-	public List<Vehiculo> consultaVehiculosRegistrados(int idUsuario);
+	public List<Vehiculo> consultaVehiculosRegistrados(String email);
 	
 }

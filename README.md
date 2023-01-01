@@ -3,4 +3,10 @@ Repositorio que contiene la implementación de la aplicación UCPark, correspond
 
 Diagrama de la arquitectura multicapa del sistema.
 
-![](Docs/Models/Arquitectura.png)
+![](Docs/Models/UCPark-Arquitectura.png)
+
+------------------------------------------
+
+Diagrama de clases del dominio del sistema
+
+![](Docs/Models/UCPark-Clases.png)

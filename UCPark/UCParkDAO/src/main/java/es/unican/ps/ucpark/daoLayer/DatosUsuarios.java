@@ -1,6 +1,5 @@
 package es.unican.ps.ucpark.daoLayer;
 
-import java.util.Iterator;
 import java.util.List;
 
 import es.unican.ps.ucpark.domain.Usuario;
@@ -10,6 +9,11 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.Query;
 
+/**
+ * DAO para la manipulacion de Usuarios.
+ * 
+ * @author Mario Martin Perez.
+ */
 @Stateless
 public class DatosUsuarios implements IUsuariosDAOLocal {
 
@@ -67,24 +71,6 @@ public class DatosUsuarios implements IUsuariosDAOLocal {
 	
 	@Override
 	public Usuario usuarioPorEmail(String email) {
-		List<Usuario> usuarios = usuarios();
-		Iterator<Usuario> iter = usuarios.iterator();
-		
-		boolean encontrado = false;
-		Usuario aux = null;
-		
-		while (iter.hasNext() && !encontrado) {
-			aux = iter.next();
-			if (aux.getEmail().equals(email)) {
-				encontrado = true;
-			}
-		}
-		
-		return aux;
-	}
-	
-	@Override
-	public Usuario usuarioPorId(int id) {
-		return em.find(Usuario.class, id);
+		return em.find(Usuario.class, email);
 	}
 }

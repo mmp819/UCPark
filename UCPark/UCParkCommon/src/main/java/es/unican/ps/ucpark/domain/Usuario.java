@@ -1,35 +1,64 @@
 package es.unican.ps.ucpark.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
-public class Usuario {
+/**
+ * Clase que representa un usuario.
+ * 
+ * @author Mario Martin Perez
+ */
+@SuppressWarnings("serial")
+@Entity
+public class Usuario implements Serializable {
 
-	private int id;
+	@Id
+	private String email;
 	private String contrasenha;
 	@OneToMany(mappedBy="propietario")
 	private List<Vehiculo> vehiculos;
 	@OneToMany
 	@JoinColumn(name="user_fk")
 	private List<MedioPago> mediosPago;
-	private String email;
 	
+	/**
+	 * Constructor por defecto.
+	 */
 	public Usuario() {
 		
 	}
 	
-	public int getId() {
-		return this.id;
+	/*
+	 * Getters & Setters.
+	 */
+
+	public String getEmail() {
+		return email;
 	}
-	
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getContrasenha() {
-		return this.contrasenha;
+		return contrasenha;
 	}
-	
+
+	public void setContrasenha(String contrasenha) {
+		this.contrasenha = contrasenha;
+	}
+
 	public List<Vehiculo> getVehiculos() {
-		return this.vehiculos;
+		return vehiculos;
+	}
+
+	public void setVehiculos(List<Vehiculo> vehiculos) {
+		this.vehiculos = vehiculos;
 	}
 
 	public List<MedioPago> getMediosPago() {
@@ -39,26 +68,20 @@ public class Usuario {
 	public void setMediosPago(List<MedioPago> mediosPago) {
 		this.mediosPago = mediosPago;
 	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setContrasenha(String contrasenha) {
-		this.contrasenha = contrasenha;
-	}
-
-	public void setVehiculos(List<Vehiculo> vehiculos) {
-		this.vehiculos = vehiculos;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (other.getEmail().equals(this.email)) {
+			return true;
+		}
+		return false;
+	}
 	
 }

@@ -5,10 +5,12 @@ import es.unican.ps.ucpark.domain.Usuario;
 public interface IGestionUsuarios {
 
 	/**
-	 * Registra un usuario.
+	 * Crea un nuevo usuario.
 	 * 
-	 * @param usuario Usuario a registrar.
+	 * @param usuario Usuario a crear.
+	 * 
 	 * @return usuario registrado.
+	 *         null si el usuario ya esta registrado.
 	 */
 	public Usuario registraUsuario(Usuario usuario);
 	

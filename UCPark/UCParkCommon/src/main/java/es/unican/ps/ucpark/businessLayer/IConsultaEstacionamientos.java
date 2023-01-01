@@ -10,18 +10,24 @@ public interface IConsultaEstacionamientos {
 	 * Obtiene el estacionamiento en vigor para un determinado vehiculo.
 	 * 
 	 * @param matricula Matricula del vehiculo a comprobar.
+	 * 
+	 * @throws OperacionNoValida si no existe un vehiculo con la matricula
+	 *                           indicada.
 	 * @return estacionamiento en vigor para el vehiculo especificado.
 	 *         null si no existe estacionamiento en vigor.
 	 */
-	public Estacionamiento estacionamientoEnVigorDeVehiculo(String matricula);
+	public Estacionamiento estacionamientoEnVigorDeVehiculo(String matricula)
+		throws OperacionNoValida;
 	
 	/**
 	 * Obtiene los estacionamientos en vigor para un determinado usuario.
 	 * 
-	 * @param idUsuario ID del usuario a comprobar.
+	 * @param email Email del usuario a comprobar.
+	 * 
+	 * @throws OperacionNoValida si no existe un usuario con el email especificado.
 	 * @return estacionamientos en vigor para el usuario especificado.
 	 */
-	public List<Estacionamiento> estacionamientosEnVigorDeUsuario(int idUsuario);
+	public List<Estacionamiento> estacionamientosEnVigorDeUsuario(String email);
 	
 	/**
 	 * Obtiene el historico de estacionamientos para un vehiculo.
@@ -34,8 +40,8 @@ public interface IConsultaEstacionamientos {
 	/**
 	 * Obtiene el historico de estacionamientos para un usuario.
 	 * 
-	 * @param idUsuario ID del usuario del que se quiere obtener el historico.
+	 * @param email Email del usuario del que se quiere obtener el historico.
 	 * @return historico de estacionamientos para el usuario indicado.
 	 */
-	public List<Estacionamiento> historicoEstacionamientosUsuario(int idUsuario);
+	public List<Estacionamiento> historicoEstacionamientosUsuario(String email);
 }

@@ -11,6 +11,7 @@ public interface IUsuariosDAO {
 	 * 
 	 * @param usuario Usuario nuevo a registrar.
 	 * @return usuario nuevo registrado.
+	 *         null si ya existe u ocurre un error.
 	 */
 	public Usuario creaUsuario(Usuario usuario);
 	
@@ -26,6 +27,7 @@ public interface IUsuariosDAO {
 	 * 
 	 * @param usuario Usuario modificado.
 	 * @return usuario modificado.
+	 *         null en caso de ocurrir un error en la modificacion.
 	 */
 	public Usuario modificaUsuario(Usuario usuario);
 	
@@ -34,6 +36,7 @@ public interface IUsuariosDAO {
 	 * 
 	 * @param usuario Usuario a eliminar.
 	 * @return usuario eliminado.
+	 *         null si ocurre un error en la eliminacion.
 	 */
 	public Usuario eliminaUsuario(Usuario usuario);
 	
@@ -45,13 +48,4 @@ public interface IUsuariosDAO {
 	 *         null si no existe ningun usuario con el email indicado.
 	 */
 	public Usuario usuarioPorEmail(String email);
-	
-	/**
-	 * Obtiene un usuario concreto en base a su id.
-	 * 
-	 * @param id ID del usuario a obtener.
-	 * @return usuario cuyo ID se corresponde con el especificado.´
-	 *         null si no existe ningun usuario con el email indicado.
-	 */
-	public Usuario usuarioPorId(int id);
 }
