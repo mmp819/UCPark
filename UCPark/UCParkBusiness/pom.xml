@@ -12,7 +12,6 @@
     <maven.compiler.source>11</maven.compiler.source>
   </properties>
   
-  <!-- Consultar si esta bien metida la dependencia -->
   <dependencies>
     <dependency>
       <groupId>es.unican.ps</groupId>

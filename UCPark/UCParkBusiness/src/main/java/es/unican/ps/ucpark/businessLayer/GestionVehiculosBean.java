@@ -23,32 +23,26 @@ public class GestionVehiculosBean implements IGestionVehiculosLocal,
 	public GestionVehiculosBean() {
 	}
 	
-	/**
-	 * Registra un nuevo vehiculo a nombre de un usuario determinado.
-	 * 
-	 * @param vehiculo Vehiculo a registrar.
-	 * @param idUsuario ID del usuario a quien asociar el vehiculo.
-	 * 
-	 * @return vehiculo registrado.
-	 *         null si el usuario ya tenia ese vehiculo registrado.
-	 */
-	public Vehiculo registraVehiculo(Vehiculo vehiculo, int idUsuario) 
+	@Override
+	public Vehiculo registraVehiculo(Vehiculo vehiculo, String email) 
 		throws OperacionNoValida {
 		
-		Usuario usuario = usuariosDAO.usuarioPorId(idUsuario);
+		Usuario usuario = usuariosDAO.usuarioPorEmail(email);
 		
 		if (usuario == null) {
-			throw new OperacionNoValida("No existe un usuario para el ID " +
+			throw new OperacionNoValida("No existe un usuario para el email " +
 					"indicado.");
 		}
 		
-		Vehiculo vehiculoRegistrado = vehiculo;
+		Vehiculo vehiculoRegistrado;
 		
 		if (usuario.getVehiculos().contains(vehiculo)) {
 			vehiculoRegistrado = null;
 		} else {
-			vehiculoRegistrado = vehiculosDAO.creaVehiculo(vehiculoRegistrado);
-			
+			vehiculoRegistrado = vehiculosDAO.creaVehiculo(vehiculo);
+			if (vehiculoRegistrado == null) { // Permite el mismo vehiculo para varias personas
+				vehiculoRegistrado = vehiculo;
+			}
 			usuario.getVehiculos().add(vehiculoRegistrado);
 			usuariosDAO.modificaUsuario(usuario);
 		}
@@ -56,13 +50,7 @@ public class GestionVehiculosBean implements IGestionVehiculosLocal,
 		return vehiculoRegistrado;
 	}
 	
-	/**
-	 * Elimina un vehiculo registrado.
-	 * 
-	 * @param vehiculo Vehiculo a eliminar.
-	 * 
-	 * @return vehiculo eliminado.
-	 */
+	@Override
 	public Vehiculo eliminaVehiculo(Vehiculo vehiculo) {
 		
 		Usuario propietario = vehiculo.getPropietario();
@@ -73,29 +61,16 @@ public class GestionVehiculosBean implements IGestionVehiculosLocal,
 		return vehiculosDAO.eliminaVehiculo(vehiculo);
 	}
 	
-	/**
-	 * Consulta vehiculos registrados a nombre de un usuario concreto.
-	 * 
-	 * @param idUsuario ID del usuario a consultar.
-	 * @return lista de vehiculos registrados a nombre del usuario especificado.
-	 *         null si no existen vehiculos registrados.
-	 */
-	public List<Vehiculo> consultaVehiculosRegistrados(int idUsuario) {
+	@Override
+	public List<Vehiculo> consultaVehiculosRegistrados(String email) {
 		
-		Usuario propietario = usuariosDAO.usuarioPorId(idUsuario);
+		Usuario propietario = usuariosDAO.usuarioPorEmail(email);
 		
 		if (propietario == null) {
-			throw new OperacionNoValida("No existe un usuario con el ID" + 
+			throw new OperacionNoValida("No existe un usuario con el email" + 
 					" especificado.");
 		}
 		
-		List<Vehiculo> vehiculosRegistrados = propietario.getVehiculos();
-		
-		if (vehiculosRegistrados.isEmpty()) {
-			vehiculosRegistrados = null;
-		}
-		
-		return vehiculosRegistrados;
+		return propietario.getVehiculos();
 	}
-
 }

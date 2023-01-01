@@ -11,6 +11,7 @@ public interface IDenunciasDAO {
 	 * 
 	 * @param denuncia Denuncia creada a registrar.
 	 * @return denuncia creada.
+	 *         null si ya existe u ocurre un error.
 	 */
 	public Denuncia creaDenuncia(Denuncia denuncia);
 	
@@ -26,6 +27,7 @@ public interface IDenunciasDAO {
 	 * 
 	 * @param denuncia Denuncia modificada.
 	 * @return denuncia modificada.
+	 *         null en caso de ocurrir un error en la modificacion.
 	 */
 	public Denuncia modificaDenuncia(Denuncia denuncia);
 	
@@ -34,6 +36,7 @@ public interface IDenunciasDAO {
 	 * 
 	 * @param denuncia Denuncia a eliminar.
 	 * @return denuncia eliminada.
+	 *         null si ocurre un error en la eliminacion.
 	 */
 	public Denuncia eliminaDenuncia(Denuncia denuncia);
 	
@@ -44,5 +47,5 @@ public interface IDenunciasDAO {
 	 * @return denuncia cuyo ID coincide con el indicado.
 	 *         null si no existe ninguna denuncia que se corresponda con el ID.
 	 */
-	public Denuncia denunciaPorId(String idDenuncia);
+	public Denuncia denunciaPorId(int idDenuncia);
 }

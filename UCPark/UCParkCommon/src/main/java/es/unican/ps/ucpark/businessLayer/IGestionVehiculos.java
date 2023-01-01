@@ -5,20 +5,23 @@ import es.unican.ps.ucpark.domain.Vehiculo;
 public interface IGestionVehiculos {
 
 	/**
-	 * Registra un vehiculo a nombre de un usuario.
+	 * Registra un nuevo vehiculo a nombre de un usuario determinado.
 	 * 
 	 * @param vehiculo Vehiculo a registrar.
-	 * @param idUsuario ID del usuario a quien asignar el vehiculo.
+	 * @param email Email del usuario a quien asociar el vehiculo.
 	 * 
+	 * @throws OperacionNoValida si no existe un usuario para el email indicado.
 	 * @return vehiculo registrado.
 	 */
-	public Vehiculo registraVehiculo(Vehiculo vehiculo, int idUsuario);
+	public Vehiculo registraVehiculo(Vehiculo vehiculo, String email)
+		throws OperacionNoValida;
 	
 	/**
 	 * Elimina un vehiculo del sistema.
 	 * 
 	 * @param vehiculo Vehiculo a eliminar.
 	 * @return vehiculo eliminado.
+	 *         null si no existe el vehiculo indicado.
 	 */
 	public Vehiculo eliminaVehiculo(Vehiculo vehiculo);
 }

@@ -12,27 +12,12 @@ public class GestionUsuariosBean implements IGestionUsuariosLocal,
 	@EJB
 	private IUsuariosDAOLocal usuariosDAO;
 	
-	/**
-	 * Crea un nuevo usuario.
-	 * 
-	 * @param usuario Usuario a crear.
-	 * 
-	 * @return usuario registrado.
-	 *         null si el usuario ya esta registrado.
-	 */
-	public Usuario registraUsuario(Usuario usuario) {
-		
-		Usuario usuarioRegistrado;
-		
-		if (usuariosDAO.usuarioPorId(usuario.getId()) == null) {
-			usuarioRegistrado = null;
-		} else {
-			usuarioRegistrado = usuariosDAO.creaUsuario(usuario);
-		}
-		
-		return usuarioRegistrado;
+	@Override
+	public Usuario registraUsuario(Usuario usuario) {		
+		return usuariosDAO.creaUsuario(usuario);
 	}
 	
+	@Override
 	public boolean loginUsuario(String email, String contrasenha) {
 		boolean estadoLogin;
 		Usuario login = usuariosDAO.usuarioPorEmail(email);
@@ -44,7 +29,5 @@ public class GestionUsuariosBean implements IGestionUsuariosLocal,
 		}
 		
 		return estadoLogin;
-	}
-	
-	
+	}	
 }

@@ -11,6 +11,7 @@ public interface IVehiculosDAO {
 	 * 
 	 * @param vehiculo Vehiculo nuevo a registrar.
 	 * @return vehiculo nuevo creado.
+	 *         null si ya existe u ocurre un error.
 	 */
 	public Vehiculo creaVehiculo(Vehiculo vehiculo);
 	
@@ -19,13 +20,14 @@ public interface IVehiculosDAO {
 	 * 
 	 * @return lista de vehiculos registrados.
 	 */
-	public List<Vehiculo> vehiuclos();
+	public List<Vehiculo> vehiculos();
 	
 	/**
 	 * Modifica un vehiculo concreto.
 	 * 
 	 * @param vehiculo Vehiculo modificado.
 	 * @return vehiculo modificado.
+	 *         null en caso de ocurrir un error en la modificacion.
 	 */
 	public Vehiculo modificaVehiculo(Vehiculo vehiculo);
 	
@@ -34,6 +36,7 @@ public interface IVehiculosDAO {
 	 * 
 	 * @param vehiculo Vehiculo a eliminar.
 	 * @return vehiculo eliminado.
+	 *         null si ocurre un error en la eliminacion.
 	 */
 	public Vehiculo eliminaVehiculo(Vehiculo vehiculo);
 	

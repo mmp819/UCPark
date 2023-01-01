@@ -13,9 +13,9 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 
 @Stateless
-public class GestionDenunciasBean implements IDenunciasAgentesLocal, IDenunciasAgentesRemote,
-	IDenunciasUsuariosLocal, IDenunciasUsuariosRemote, IConsultaDenunciasLocal,
-	IConsultaDenunciasRemote {
+public class GestionDenunciasBean implements IDenunciasAgentesLocal, 
+	IDenunciasAgentesRemote, IDenunciasUsuariosLocal, IDenunciasUsuariosRemote, 
+	IConsultaDenunciasLocal, IConsultaDenunciasRemote {
 	
 	@EJB
 	private IDenunciasDAOLocal denunciasDAO;
@@ -23,20 +23,14 @@ public class GestionDenunciasBean implements IDenunciasAgentesLocal, IDenunciasA
 	@EJB
 	private IVehiculosDAOLocal vehiculosDAO;
 	
-	
+	/**
+	 * Constructor por defecto.
+	 */
 	public GestionDenunciasBean() {
+		
 	}
 	
-
-	/**
-	 * Retorna el ultimo estacionamiento realizado por un vehiculo.
-	 * 
-	 * @param matricula Matricula del vehiculo.
-	 * 
-	 * @throws OperacionNoValida si no existe un vehiculo con la matricula indicada
-	 * @return ultimo estacionamiento realizado por el vehiculo.
-	 *         null si no hay estacionamientos registrados para el vehiculo.
-	 */
+	@Override
 	public Estacionamiento obtieneUltimoEstacionamientoVehiculo(String matricula)
 		throws OperacionNoValida {
 		
@@ -61,16 +55,7 @@ public class GestionDenunciasBean implements IDenunciasAgentesLocal, IDenunciasA
 	}
 	
 	
-	/**
-	 * Registra una denuncia y la asocia a un vehiculo.
-	 * 
-	 * @param denuncia Denuncia a registrar.
-	 * @parma matricula Matricula del vehiculo infractor.
-	 * 
-	 * @throws OperacionNoValida si no existe un vehiculo con la matricula indicada.
-	 * @return denuncia registrada.
-	 *         null si la denuncia a registrar ya existia en el vehiculo.
-	 */
+	@Override
 	public Denuncia registraDenuncia(Denuncia denuncia, String matricula) 
 		throws OperacionNoValida {
 		
@@ -83,46 +68,36 @@ public class GestionDenunciasBean implements IDenunciasAgentesLocal, IDenunciasA
 		
 		Denuncia denunciaRegistrada = denuncia;
 		
-		if (vehiculo.getHistoricoDenuncias().contains(denuncia)) {
+		if (vehiculo.getDenuncias().contains(denuncia)) {
 			denunciaRegistrada = null;
 		} else {
 			denunciasDAO.creaDenuncia(denunciaRegistrada);
-			vehiculo.getHistoricoDenuncias().add(denunciaRegistrada);
+			vehiculo.getDenuncias().add(denunciaRegistrada);
 			vehiculosDAO.modificaVehiculo(vehiculo);
 		}
 		
 		return denunciaRegistrada;
 	}
 	
-	/**
-	 * Anula una denuncia concreta.
-	 * 
-	 * @param denuncia Denuncia a anular.
-	 * @return denuncia anulada.
-	 */
+	@Override
 	public Denuncia anulaDenuncia(Denuncia denuncia) {
 		
 		Vehiculo vehiculoDenunciado = denuncia.getVehiculoDenunciado();
 
-		vehiculoDenunciado.getHistoricoDenuncias().remove(denuncia);
+		vehiculoDenunciado.getDenuncias().remove(denuncia);
 		vehiculosDAO.modificaVehiculo(vehiculoDenunciado);
 		
 		return denunciasDAO.eliminaDenuncia(denuncia);
 	}
 	
-	/**
-	 * Consulta las denuncias acumuladas vigentes de un usuario.
-	 * 
-	 * @param usuario Usuario del que se quieren consultar las denuncias.
-	 * @return denuncias vigentes acumuladas por el usuario especificado.
-	 */
+	@Override
 	public List<Denuncia> consultaDenunciasAcumuladas(Usuario usuario) {
 		
 		List<Vehiculo> vehiculos = usuario.getVehiculos();
 		List<Denuncia> denuncias = new ArrayList<Denuncia>();
 		
 		for (Vehiculo vehiculo:vehiculos) {
-			denuncias.addAll(vehiculo.getHistoricoDenuncias());
+			denuncias.addAll(vehiculo.getDenuncias());
 		}
 		
 		return denuncias;
