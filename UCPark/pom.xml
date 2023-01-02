@@ -62,6 +62,7 @@
   	<module>UCParkBusiness</module>
   	<module>UCParkCommon</module>
   	<module>UCParkDAO</module>
+  	<module>UCParkWeb</module>
   </modules>
   
 </project>
