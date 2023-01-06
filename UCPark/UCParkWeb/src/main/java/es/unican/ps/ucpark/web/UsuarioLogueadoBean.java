@@ -38,16 +38,16 @@ public class UsuarioLogueadoBean implements Serializable {
 	}
 	
 	@PostConstruct
-	public void getEmail() {
-		email = ab.getEmail();
-	}
-	
-	@PostConstruct
 	public void loadMatriculasRegistradas() {
+		this.getEmail();
 		List<Vehiculo> vehiculos = consultaVehiculos.consultaVehiculosRegistrados(email);
 		for (Vehiculo v:vehiculos) {
 			listaMatriculasRegistradas.add(v.getMatricula());
 		}
+	}
+	
+	public void getEmail() {
+		email = ab.getEmail();
 	}
 	
 	public String doNuevoEstacionamiento() {

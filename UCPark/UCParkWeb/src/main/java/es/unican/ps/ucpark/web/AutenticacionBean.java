@@ -5,11 +5,12 @@ import java.io.Serializable;
 import es.unican.ps.ucpark.businessLayer.IGestionUsuariosRemote;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
 @SuppressWarnings("serial")
 @Named
-@RequestScoped
+@SessionScoped
 public class AutenticacionBean implements Serializable {
 
 	@EJB

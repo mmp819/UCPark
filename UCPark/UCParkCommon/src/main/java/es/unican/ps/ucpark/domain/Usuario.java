@@ -3,6 +3,7 @@ package es.unican.ps.ucpark.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -19,6 +20,7 @@ public class Usuario implements Serializable {
 
 	@Id
 	private String email;
+	@Column(name="pswrd")
 	private String contrasenha;
 	@OneToMany(mappedBy="propietario")
 	private List<Vehiculo> vehiculos;

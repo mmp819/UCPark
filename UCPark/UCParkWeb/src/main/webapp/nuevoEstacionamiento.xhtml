@@ -9,6 +9,7 @@
 <h:body>
 	<h1 style="text-align:center">Crear un nuevo estacionamiento</h1>
 	<h:form id="nuevoEstacionamientoForm">
+	  <div align="center">
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Vehiculo: "/>
 			<h:selectOneMenu value="#{usuarioLogueadoBean.matriculaSeleccionada}">
@@ -19,6 +20,7 @@
 		</h:panelGrid>
 		<h:commandButton align="center" value="Crear estacionamiento" 
 			action=""/>
+	  </div>
 	</h:form>	
 </h:body>
 </html>

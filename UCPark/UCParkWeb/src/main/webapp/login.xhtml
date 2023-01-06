@@ -9,13 +9,17 @@
 <h:body>
 	<h1 style="text-align:center">Bienvenido a UCPark</h1>
 	<h:form id="loginForm">
-		<h:panelGrid columns="2">
+	  <div align="center">
+		<h:panelGrid columns="2" margin-bottom="100px">
 			<h:outputLabel value="Usuario (email): "/>
 			<h:inputText id="email" value="#{autenticacionBean.email}"/>
 			<h:outputLabel value="Contraseña: "/>
 			<h:inputText id="contrasenha" value="#{autenticacionBean.contrasenha}"/>
 		</h:panelGrid>
-		<h:commandButton align="center" value="Entrar" action="#{autenticacionBean.doLogin"/>
+		<br>
+		</br>	
+		<h:commandButton align="center" value="Entrar" action="#{autenticacionBean.doLogin}"/>
+	  </div>
 	</h:form>	
 </h:body>
 </html>

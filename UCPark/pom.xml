@@ -63,6 +63,7 @@
   	<module>UCParkCommon</module>
   	<module>UCParkDAO</module>
   	<module>UCParkWeb</module>
+  	<module>UCParkEAR</module>
   </modules>
   
 </project>

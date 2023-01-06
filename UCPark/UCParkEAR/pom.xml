@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>es.unican.ps</groupId>
+    <artifactId>UCPark</artifactId>
+    <version>1.0</version>
+  </parent>
+  <artifactId>UCParkEAR</artifactId>
+  <packaging>ear</packaging>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>es.unican.ps</groupId>
+  		<artifactId>UCParkBusiness</artifactId>
+  		<version>1.0</version>
+  		<type>ejb</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>es.unican.ps</groupId>
+  		<artifactId>UCParkCommon</artifactId>
+  		<version>1.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>es.unican.ps</groupId>
+  		<artifactId>UCParkDAO</artifactId>
+  		<version>1.0</version>
+  		<type>ejb</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>es.unican.ps</groupId>
+  		<artifactId>UCParkWeb</artifactId>
+  		<version>1.0</version>
+  		<type>war</type>
+  	</dependency>
+  </dependencies>
+  
+  <build>
+	<finalName>UCPark</finalName>
+	<plugins>
+		<!-- The ear plugin must include the definition for "modules", for any 
+			modules that are needed to be included in the EAR file, you need to specify 
+			them one by one, e.g. "ejbModule", "webModule", "jarModule" and "appClientModule". -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-ear-plugin</artifactId>
+			<version>3.1.0</version>
+			<configuration>
+				<defaultLibBundleDir>lib</defaultLibBundleDir>
+				<modules>
+					<ejbModule>
+						<groupId>es.unican.ps</groupId>
+						<artifactId>UCParkBusiness</artifactId>
+					</ejbModule>
+					<!-- Este módulo es solo una librería, se añade como jarModule de modo 
+						que se añade a la carpeta lib del ear -->
+					<jarModule>
+						<groupId>es.unican.ps</groupId>
+						<artifactId>UCParkCommon</artifactId>
+					</jarModule>
+					
+					<ejbModule>
+						<groupId>es.unican.ps</groupId>
+						<artifactId>UCParkDAO</artifactId>
+					</ejbModule>
+					<webModule>
+						<groupId>es.unican.ps</groupId>
+						<artifactId>UCParkWeb</artifactId>
+					</webModule>
+				</modules>
+			</configuration>
+		</plugin>
+
+
+		<plugin>
+			<groupId>org.glassfish.maven.plugin</groupId>
+			<artifactId>maven-glassfish-plugin</artifactId>
+			<version>2.1</version>
+			<configuration>
+				<glassfishDirectory>${local.glassfish.home}</glassfishDirectory>
+				<user>admin</user>
+				<passwordFile>${local.glassfish.passfile}</passwordFile>
+				<domain>
+					<name>domain1</name>
+					<httpPort>8080</httpPort>
+					<adminPort>4848</adminPort>
+				</domain>
+				<components>
+					<component>
+						<name>${project.artifactId}</name>
+						<artifact>target/${project.build.finalName}.ear</artifact>
+					</component>
+				</components>
+				<echo>true</echo>
+			</configuration>
+
+		</plugin>
+	</plugins>
+  </build>
+</project>
