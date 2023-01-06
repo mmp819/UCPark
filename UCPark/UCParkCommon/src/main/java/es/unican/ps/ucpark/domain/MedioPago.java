@@ -14,7 +14,7 @@ import jakarta.persistence.Inheritance;
  */
 @SuppressWarnings("serial")
 @Entity
-@Inheritance(strategy = jakarta.persistence.InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = jakarta.persistence.InheritanceType.JOINED)
 public abstract class MedioPago implements Serializable {
 
 	@Id

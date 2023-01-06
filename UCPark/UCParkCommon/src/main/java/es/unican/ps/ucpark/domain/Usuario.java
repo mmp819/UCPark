@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
@@ -22,7 +23,7 @@ public class Usuario implements Serializable {
 	private String email;
 	@Column(name="pswrd")
 	private String contrasenha;
-	@OneToMany(mappedBy="propietario")
+	@OneToMany(mappedBy="propietario", fetch=FetchType.EAGER)
 	private List<Vehiculo> vehiculos;
 	@OneToMany
 	@JoinColumn(name="user_fk")

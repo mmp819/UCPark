@@ -8,6 +8,9 @@
 
 <h:body>
 	<h1 style="text-align:center">Nuevo estacionamiento creado</h1>
+	<div>
+		<br> </br>
+	</div>
 	<h:form>
 	  <div align="center">
 		<h:panelGrid columns="2">
@@ -15,11 +18,14 @@
 			<h:outputText value="#{usuarioLogueadoBean.matriculaSeleccionada}"/>
 			<h:outputLabel value="Finaliza a las: "/>
 			<h:outputText value="#{usuarioLogueadoBean.horaFin}" > 	
-				<f:convertDateTime dateStyle="full" locale="es" timeStyle="long"
-					type="both" />
+				<f:convertDateTime pattern="HH:mm:ss" type="localDateTime" />
 			</h:outputText>
 		</h:panelGrid>
-		<h:commandButton align="center" value="Inicio" output="index.xhtml"/>
+		<div>
+			<br> </br>
+		</div>
+		<h:commandButton align="center" value="Inicio" 
+			action="#{usuarioLogueadoBean.doIndex}"/>
 	  </div>
 	</h:form>	
 </h:body>

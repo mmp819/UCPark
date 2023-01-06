@@ -8,17 +8,32 @@
 
 <h:body>
 	<h1 style="text-align:center">Bienvenido a UCPark</h1>
+	<div>
+		<br> </br>
+	</div>
 	<h:form id="loginForm">
 	  <div align="center">
-		<h:panelGrid columns="2" margin-bottom="100px">
+		<h:panelGrid columns="2">
 			<h:outputLabel value="Usuario (email): "/>
-			<h:inputText id="email" value="#{autenticacionBean.email}"/>
+			<h:inputText id="email" value="#{autenticacionBean.email}"
+					    validator="emailValidator"
+						required="true"
+						requiredMessage="Introduzca un email."/>	
 			<h:outputLabel value="Contraseña: "/>
-			<h:inputText id="contrasenha" value="#{autenticacionBean.contrasenha}"/>
+			<h:inputText id="contrasenha" value="#{autenticacionBean.contrasenha}"
+						required="true"
+						requiredMessage="Introduzca una contraseña."/>
 		</h:panelGrid>
 		<br>
 		</br>	
 		<h:commandButton align="center" value="Entrar" action="#{autenticacionBean.doLogin}"/>
+	  </div>
+	  
+	  <br>
+	  </br>
+	  
+	  <div align="center">
+	  	<h:messages style="color:red" layout="table"/>
 	  </div>
 	</h:form>	
 </h:body>

@@ -75,9 +75,10 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		timerService.createSingleActionTimer(horaFin.atZone(
 				ZoneId.systemDefault()).toInstant().toEpochMilli(), null);
 		
-		vehiculo.getHistoricoEstacionamientos().add(estacionamiento);
+		estacionamiento = estacionamientosDAO.creaEstacionamiento(estacionamiento);
+		vehiculo.setEstacionamientoEnVigor(estacionamiento);
 		vehiculosDAO.modificaVehiculo(vehiculo);
-		return estacionamientosDAO.creaEstacionamiento(estacionamiento);
+		return estacionamiento;
 	}
 	
 	@Override

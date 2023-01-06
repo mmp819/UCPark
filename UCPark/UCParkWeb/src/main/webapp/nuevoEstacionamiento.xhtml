@@ -8,6 +8,9 @@
 
 <h:body>
 	<h1 style="text-align:center">Crear un nuevo estacionamiento</h1>
+	<div>
+		<br> </br>
+	</div>
 	<h:form id="nuevoEstacionamientoForm">
 	  <div align="center">
 		<h:panelGrid columns="2">
@@ -15,11 +18,24 @@
 			<h:selectOneMenu value="#{usuarioLogueadoBean.matriculaSeleccionada}">
 				<f:selectItems value="#{usuarioLogueadoBean.listaMatriculasRegistradas}"/>
 			</h:selectOneMenu>
+			
 			<h:outputLabel value="Minutos: "/>
-			<h:inputText value="#{usuarioLogueadoBean.minutos}"/>
+			<h:inputText id="minutos" value="#{usuarioLogueadoBean.minutos}">
+				<f:validateLongRange minimum="1" maximum="120"/>
+			</h:inputText>
 		</h:panelGrid>
-		<h:commandButton align="center" value="Crear estacionamiento" 
-			action=""/>
+		<div>
+			<br> </br>
+		</div>
+		<h:commandButton align="center" value="Crear estacionamiento"
+			action="#{usuarioLogueadoBean.doConfirmEstacionamiento}"/>
+		<div>
+			<br> </br>
+		</div>
+		<div align="center">
+	  		<h:messages style="color:red" layout="table" for="minutos"/>
+	  		<h:messages globalOnly="true" layout="table" style="color:red"/>
+	  	</div>
 	  </div>
 	</h:form>	
 </h:body>

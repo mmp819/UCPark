@@ -1,5 +1,6 @@
 package es.unican.ps.ucpark.businessLayer;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -74,6 +75,19 @@ public class GestionVehiculosBean implements IGestionVehiculosLocal,
 		}
 		
 		return propietario.getVehiculos();
+	}
+	
+	@Override
+	public List<String> consultaMatriculasRegistradas(String email) 
+			throws OperacionNoValida {
+		List<Vehiculo> vehiculos = this.consultaVehiculosRegistrados(email);
+		List<String> matriculas = new ArrayList<>();
+		
+		for (Vehiculo v:vehiculos) {
+			matriculas.add(v.getMatricula());
+		}
+		
+		return matriculas;
 	}
 	
 	@Override

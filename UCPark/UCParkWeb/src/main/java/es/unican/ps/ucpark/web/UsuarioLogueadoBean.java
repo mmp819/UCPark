@@ -11,6 +11,8 @@ import es.unican.ps.ucpark.domain.Vehiculo;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
@@ -40,10 +42,7 @@ public class UsuarioLogueadoBean implements Serializable {
 	@PostConstruct
 	public void loadMatriculasRegistradas() {
 		this.getEmail();
-		List<Vehiculo> vehiculos = consultaVehiculos.consultaVehiculosRegistrados(email);
-		for (Vehiculo v:vehiculos) {
-			listaMatriculasRegistradas.add(v.getMatricula());
-		}
+		listaMatriculasRegistradas = consultaVehiculos.consultaMatriculasRegistradas(email);
 	}
 	
 	public void getEmail() {
@@ -54,17 +53,31 @@ public class UsuarioLogueadoBean implements Serializable {
 		return "nuevoEstacionamiento.xhtml";
 	}
 	
+	public String doIndex() {
+		return "index.xhtml";
+	}
+	
 	public String doConfirmEstacionamiento() {
 		Vehiculo v = consultaVehiculos.consultaVehiculoRegistrado(email, 
 				matriculaSeleccionada);
 		
-		Estacionamiento e = gestionEstacionamientos.creaEstacionamiento(v, minutos);
+		Estacionamiento e = null;
+		
+		try {
+			e = gestionEstacionamientos.creaEstacionamiento(v, minutos);
+		} catch (Exception exc) {
+			String mensaje = "El vehiculo ya tiene un estacionamiento en vigor.";
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null));
+			return "nuevoEstacionamiento.xhtml";
+		}
 		
 		String result;
 		
 		if (e == null) {
-			result = "nuevoEstacionamiento.xhtml";
+			result = "nuevoEstacionameinto.xhtml";
 		} else {
+			this.setHoraFin(e.getHoraInicio().plusMinutes(e.getMinutos()));
 			result = "infoEstacionamiento.xhtml";
 		}
 		
