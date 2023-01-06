@@ -1,5 +1,6 @@
 package es.unican.ps.ucpark.businessLayer;
 
+import java.util.Iterator;
 import java.util.List;
 
 import es.unican.ps.ucpark.daoLayer.IUsuariosDAOLocal;
@@ -62,7 +63,8 @@ public class GestionVehiculosBean implements IGestionVehiculosLocal,
 	}
 	
 	@Override
-	public List<Vehiculo> consultaVehiculosRegistrados(String email) {
+	public List<Vehiculo> consultaVehiculosRegistrados(String email) 
+		throws OperacionNoValida {
 		
 		Usuario propietario = usuariosDAO.usuarioPorEmail(email);
 		
@@ -73,4 +75,36 @@ public class GestionVehiculosBean implements IGestionVehiculosLocal,
 		
 		return propietario.getVehiculos();
 	}
+	
+	@Override
+	public Vehiculo consultaVehiculoRegistrado(String email, String matricula) 
+		throws OperacionNoValida {
+		
+		Usuario propietario = usuariosDAO.usuarioPorEmail(email);
+		
+		if (propietario == null) {
+			throw new OperacionNoValida("No existe un usuario con el email" + 
+					" especificado.");
+		}
+		
+		List<Vehiculo> vehiculos = propietario.getVehiculos();
+		Iterator<Vehiculo> iterador = vehiculos.iterator();
+		
+		boolean encontrado = false;
+		Vehiculo v = null;
+		
+		while (!encontrado && iterador.hasNext()) {
+			v = iterador.next();
+			if (v.getMatricula().equals(matricula)) {
+				encontrado = true;
+			}
+		}
+		
+		if (!encontrado) {
+			v = null;
+		}
+
+		return v;
+	}
+	
 }

@@ -1,8 +1,6 @@
 package es.unican.ps.ucpark.domain;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 
 /**
  * Clase que representa un medio de pago de tipo 'Tarjeta'.
@@ -13,9 +11,6 @@ import jakarta.persistence.Id;
 @Entity
 public class Tarjeta extends MedioPago {
 
-	@Id
-	@GeneratedValue
-	private int id;
 	private String numero;
 	private String cvc;
 	private String titular;
@@ -30,14 +25,6 @@ public class Tarjeta extends MedioPago {
 	/*
 	 * Getters & Setters.
 	 */
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getNumero() {
 		return numero;
