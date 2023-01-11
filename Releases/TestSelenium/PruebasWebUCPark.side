@@ -1,0 +1,621 @@
+{
+  "id": "54ed3abe-1471-47e1-80c6-fbb2c4be80c0",
+  "version": "2.0",
+  "name": "PruebasWebUCPark",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "d8f922ac-0ee3-403e-be09-6d0242bc2ef4",
+    "name": "CalculadoraNuevoEstacionamientoTest",
+    "commands": [{
+      "id": "48eb4605-a61e-4f01-bf56-91ccd3c76719",
+      "comment": "",
+      "command": "open",
+      "target": "/UCParkWeb/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ed6ac06-ef9f-4124-8d78-7c816b840683",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6b2e2b20-15c9-4cde-9d84-cd64a9fd9f8f",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Bienvenido a UCPark')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2328c0ca-4174-4192-9c38-982cb5d9df8c",
+      "comment": "",
+      "command": "click",
+      "target": "id=loginForm:email",
+      "targets": [
+        ["id=loginForm:email", "id"],
+        ["name=loginForm:email", "name"],
+        ["css=#loginForm\\3A email", "css:finder"],
+        ["xpath=//input[@id='loginForm:email']", "xpath:attributes"],
+        ["xpath=//form[@id='loginForm']/div/table/tbody/tr/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "846533c8-3a4f-4c4b-aaa4-9d2c3261b629",
+      "comment": "",
+      "command": "type",
+      "target": "id=loginForm:email",
+      "targets": [
+        ["id=loginForm:email", "id"],
+        ["name=loginForm:email", "name"],
+        ["css=#loginForm\\3A email", "css:finder"],
+        ["xpath=//input[@id='loginForm:email']", "xpath:attributes"],
+        ["xpath=//form[@id='loginForm']/div/table/tbody/tr/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "mmp819@email.com"
+    }, {
+      "id": "143c9532-e484-4631-a4ce-384a948ca97e",
+      "comment": "",
+      "command": "click",
+      "target": "id=loginForm:contrasenha",
+      "targets": [
+        ["id=loginForm:contrasenha", "id"],
+        ["name=loginForm:contrasenha", "name"],
+        ["css=#loginForm\\3A contrasenha", "css:finder"],
+        ["xpath=//input[@id='loginForm:contrasenha']", "xpath:attributes"],
+        ["xpath=//form[@id='loginForm']/div/table/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "20c2b8a0-e788-43a0-882d-15391bceecbe",
+      "comment": "",
+      "command": "type",
+      "target": "id=loginForm:contrasenha",
+      "targets": [
+        ["id=loginForm:contrasenha", "id"],
+        ["name=loginForm:contrasenha", "name"],
+        ["css=#loginForm\\3A contrasenha", "css:finder"],
+        ["xpath=//input[@id='loginForm:contrasenha']", "xpath:attributes"],
+        ["xpath=//form[@id='loginForm']/div/table/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "1234"
+    }, {
+      "id": "74e3ee32-f139-4ab4-b094-dcf8e6a4147d",
+      "comment": "",
+      "command": "click",
+      "target": "name=loginForm:j_idt11",
+      "targets": [
+        ["name=loginForm:j_idt11", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='loginForm:j_idt11']", "xpath:attributes"],
+        ["xpath=//form[@id='loginForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b9e7850-93e6-41cf-a302-fcc0a751d41f",
+      "comment": "",
+      "command": "click",
+      "target": "name=j_idt6:j_idt12",
+      "targets": [
+        ["name=j_idt6:j_idt12", "name"],
+        ["css=div:nth-child(6) > input", "css:finder"],
+        ["xpath=//input[@name='j_idt6:j_idt12']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8eef215-767e-4bdd-be62-5238e3b98cb2",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Crear un nuevo estacionamiento')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "94cca8ab-0f4e-4d53-ac4b-d2498901e029",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Crear un nuevo estacionamiento')]", "xpath:innerText"]
+      ],
+      "value": "Crear un nuevo estacionamiento"
+    }, {
+      "id": "14f7cc1d-8363-47f3-809e-aba46263274b",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table/tbody/tr", "xpath:idRelative"],
+        ["xpath=//tr", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c10d565-3b32-4b79-ae1b-2ca5248857af",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) label",
+      "targets": [
+        ["css=tr:nth-child(1) label", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table/tbody/tr/td/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Vehiculo:')]", "xpath:innerText"]
+      ],
+      "value": "Vehiculo:"
+    }, {
+      "id": "ccc66500-9904-4855-b53e-9ba8c720a30d",
+      "comment": "",
+      "command": "click",
+      "target": "css=table",
+      "targets": [
+        ["css=table", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table", "xpath:idRelative"],
+        ["xpath=//table", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e67e7e58-f426-4a64-9415-70f669e64451",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) label",
+      "targets": [
+        ["css=tr:nth-child(2) label", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table/tbody/tr[2]/td/label", "xpath:idRelative"],
+        ["xpath=//tr[2]/td/label", "xpath:position"],
+        ["xpath=//label[contains(.,'Minutos:')]", "xpath:innerText"]
+      ],
+      "value": "Minutos:"
+    }, {
+      "id": "c5917aa5-29bd-4c9e-8f8b-afd5f350bed1",
+      "comment": "",
+      "command": "click",
+      "target": "name=nuevoEstacionamientoForm:j_idt9",
+      "targets": [
+        ["name=nuevoEstacionamientoForm:j_idt9", "name"],
+        ["css=select", "css:finder"],
+        ["xpath=//select[@name='nuevoEstacionamientoForm:j_idt9']", "xpath:attributes"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table/tbody/tr/td[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9ad90d36-21a4-429f-b97f-4b1f4b0664d8",
+      "comment": "",
+      "command": "click",
+      "target": "id=nuevoEstacionamientoForm:minutos",
+      "targets": [
+        ["id=nuevoEstacionamientoForm:minutos", "id"],
+        ["name=nuevoEstacionamientoForm:minutos", "name"],
+        ["css=#nuevoEstacionamientoForm\\3Aminutos", "css:finder"],
+        ["xpath=//input[@id='nuevoEstacionamientoForm:minutos']", "xpath:attributes"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "74894f5e-3740-40f7-86ca-6ff6230a9357",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(4)",
+      "targets": [
+        ["css=div:nth-child(4)", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "05fdb66a-9dc8-4e1b-b5ba-e2911699a525",
+      "comment": "",
+      "command": "click",
+      "target": "name=nuevoEstacionamientoForm:j_idt13",
+      "targets": [
+        ["name=nuevoEstacionamientoForm:j_idt13", "name"],
+        ["css=div > input", "css:finder"],
+        ["xpath=//input[@name='nuevoEstacionamientoForm:j_idt13']", "xpath:attributes"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eac3baab-717b-4c11-ad67-3a86396e5883",
+      "comment": "",
+      "command": "click",
+      "target": "css=html",
+      "targets": [
+        ["css=html", "css:finder"],
+        ["xpath=//html", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "34a25f68-d427-4afa-aac9-8b262b09bb00",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=div:nth-child(5) td",
+      "targets": [
+        ["css=div:nth-child(5) td", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/div[3]/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'nuevoEstacionamientoForm:minutos: Error de validación: el atributo especificado no está entre los valores esperados: 1 y 120.')]", "xpath:innerText"]
+      ],
+      "value": "nuevoEstacionamientoForm:minutos: Error de validación: el atributo especificado no está entre los valores esperados: 1 y 120."
+    }, {
+      "id": "ce868b22-df4c-4e79-bada-852d1622eb34",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table/tbody/tr[2]", "xpath:idRelative"],
+        ["xpath=//tr[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dcef4d03-aaca-4b20-ae7b-48a414e775c0",
+      "comment": "",
+      "command": "type",
+      "target": "id=nuevoEstacionamientoForm:minutos",
+      "targets": [
+        ["id=nuevoEstacionamientoForm:minutos", "id"],
+        ["name=nuevoEstacionamientoForm:minutos", "name"],
+        ["css=#nuevoEstacionamientoForm\\3Aminutos", "css:finder"],
+        ["xpath=//input[@id='nuevoEstacionamientoForm:minutos']", "xpath:attributes"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "121"
+    }, {
+      "id": "90083f76-45e3-47e9-a848-f1f313b91517",
+      "comment": "",
+      "command": "click",
+      "target": "css=#nuevoEstacionamientoForm > div",
+      "targets": [
+        ["css=#nuevoEstacionamientoForm > div", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div", "xpath:idRelative"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ed0571e3-f232-40ba-bade-1b21d9f21aed",
+      "comment": "",
+      "command": "click",
+      "target": "name=nuevoEstacionamientoForm:j_idt13",
+      "targets": [
+        ["name=nuevoEstacionamientoForm:j_idt13", "name"],
+        ["css=div > input", "css:finder"],
+        ["xpath=//input[@name='nuevoEstacionamientoForm:j_idt13']", "xpath:attributes"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4e9ac45d-cc31-4118-85a0-a954ba8baf41",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(5)",
+      "targets": [
+        ["css=div:nth-child(5)", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cb4c7913-1d53-4dd2-968e-65a8dbac3bf2",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=div:nth-child(5) td",
+      "targets": [
+        ["css=div:nth-child(5) td", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/div[3]/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'nuevoEstacionamientoForm:minutos: Error de validación: el atributo especificado no está entre los valores esperados: 1 y 120.')]", "xpath:innerText"]
+      ],
+      "value": "nuevoEstacionamientoForm:minutos: Error de validación: el atributo especificado no está entre los valores esperados: 1 y 120."
+    }, {
+      "id": "e1ef87f4-e29e-4e10-ad41-843a4d82909c",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table/tbody/tr[2]", "xpath:idRelative"],
+        ["xpath=//tr[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "195df859-6dc4-45f8-a753-c252eb2dfcab",
+      "comment": "",
+      "command": "type",
+      "target": "id=nuevoEstacionamientoForm:minutos",
+      "targets": [
+        ["id=nuevoEstacionamientoForm:minutos", "id"],
+        ["name=nuevoEstacionamientoForm:minutos", "name"],
+        ["css=#nuevoEstacionamientoForm\\3Aminutos", "css:finder"],
+        ["xpath=//input[@id='nuevoEstacionamientoForm:minutos']", "xpath:attributes"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "60"
+    }, {
+      "id": "db97c635-a8ca-426a-bb7d-36cbb4c9c245",
+      "comment": "",
+      "command": "click",
+      "target": "css=#nuevoEstacionamientoForm > div",
+      "targets": [
+        ["css=#nuevoEstacionamientoForm > div", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div", "xpath:idRelative"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d21bdac-b212-42b9-ac33-22999860fdd5",
+      "comment": "",
+      "command": "click",
+      "target": "name=nuevoEstacionamientoForm:j_idt13",
+      "targets": [
+        ["name=nuevoEstacionamientoForm:j_idt13", "name"],
+        ["css=div > input", "css:finder"],
+        ["xpath=//input[@name='nuevoEstacionamientoForm:j_idt13']", "xpath:attributes"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "505b68ab-7d7d-4c30-ba7c-b21277bc0855",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Nuevo estacionamiento creado')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d114793a-637c-4fe5-b75f-d4b8a06591ca",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Nuevo estacionamiento creado')]", "xpath:innerText"]
+      ],
+      "value": "Nuevo estacionamiento creado"
+    }, {
+      "id": "8328ca11-e3ee-42c3-ad96-27c70ac44812",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Vehiculo:')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb993b6b-0a0f-4aa4-94e2-9da07e9c8428",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) label",
+      "targets": [
+        ["css=tr:nth-child(1) label", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/div/table/tbody/tr/td/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Vehiculo:')]", "xpath:innerText"]
+      ],
+      "value": "Vehiculo:"
+    }, {
+      "id": "57cfe54c-1777-4100-9849-e273b239b054",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Finaliza a las:')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "def7df07-3fdc-4c0a-b139-0be34f610c78",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) label",
+      "targets": [
+        ["css=tr:nth-child(2) label", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/div/table/tbody/tr[2]/td/label", "xpath:idRelative"],
+        ["xpath=//tr[2]/td/label", "xpath:position"],
+        ["xpath=//label[contains(.,'Finaliza a las:')]", "xpath:innerText"]
+      ],
+      "value": "Finaliza a las:"
+    }, {
+      "id": "2ee2724b-bc6e-4796-ac58-2100e28e42ad",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/div/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'1234-ABC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7bac5e79-b99b-4a98-8a9f-37858f9d4728",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/div/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'1234-ABC')]", "xpath:innerText"]
+      ],
+      "value": "1234-ABC"
+    }, {
+      "id": "afe2c1c2-bfbc-400f-a892-696dc5ffa8a3",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/div/table/tbody/tr[2]/td[2]", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'09:44:44')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "94f88f24-5768-4c71-b77a-604173127ac5",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/div/table/tbody/tr[2]/td[2]", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'09:44:44')]", "xpath:innerText"]
+      ],
+      "value": "09:44:44"
+    }, {
+      "id": "99687d00-b7a3-4748-a753-f24d1e4539a9",
+      "comment": "",
+      "command": "click",
+      "target": "name=j_idt6:j_idt14",
+      "targets": [
+        ["name=j_idt6:j_idt14", "name"],
+        ["css=div > input", "css:finder"],
+        ["xpath=//input[@name='j_idt6:j_idt14']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cd792670-1944-4c1d-825f-d273e1a0e65a",
+      "comment": "",
+      "command": "click",
+      "target": "name=j_idt6:j_idt12",
+      "targets": [
+        ["name=j_idt6:j_idt12", "name"],
+        ["css=div:nth-child(6) > input", "css:finder"],
+        ["xpath=//input[@name='j_idt6:j_idt12']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0cc2c590-7a96-4c23-99da-4dcf158a5ac1",
+      "comment": "",
+      "command": "click",
+      "target": "name=nuevoEstacionamientoForm:j_idt9",
+      "targets": [
+        ["name=nuevoEstacionamientoForm:j_idt9", "name"],
+        ["css=select", "css:finder"],
+        ["xpath=//select[@name='nuevoEstacionamientoForm:j_idt9']", "xpath:attributes"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table/tbody/tr/td[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c61a83b8-a6a5-4bb9-8423-e9d215ff5b90",
+      "comment": "",
+      "command": "click",
+      "target": "id=nuevoEstacionamientoForm:minutos",
+      "targets": [
+        ["id=nuevoEstacionamientoForm:minutos", "id"],
+        ["name=nuevoEstacionamientoForm:minutos", "name"],
+        ["css=#nuevoEstacionamientoForm\\3Aminutos", "css:finder"],
+        ["xpath=//input[@id='nuevoEstacionamientoForm:minutos']", "xpath:attributes"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/table/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "79c0961a-e65e-4ab8-99ec-100360e28197",
+      "comment": "",
+      "command": "click",
+      "target": "name=nuevoEstacionamientoForm:j_idt13",
+      "targets": [
+        ["name=nuevoEstacionamientoForm:j_idt13", "name"],
+        ["css=div > input", "css:finder"],
+        ["xpath=//input[@name='nuevoEstacionamientoForm:j_idt13']", "xpath:attributes"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d40fda1e-92f3-46e6-a589-abdcec8dbb9f",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(5) > table",
+      "targets": [
+        ["css=div:nth-child(5) > table", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/div[3]/table", "xpath:idRelative"],
+        ["xpath=//div[3]/table", "xpath:position"],
+        ["xpath=//table[contains(.,'El vehiculo ya tiene un estacionamiento en vigor.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a7452e2-63b7-4dc2-a45e-23863ddb194b",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(5) td",
+      "targets": [
+        ["css=div:nth-child(5) td", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/div[3]/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'El vehiculo ya tiene un estacionamiento en vigor.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1bfe3499-9ba5-481c-a877-91adc2b46466",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(5)",
+      "targets": [
+        ["css=div:nth-child(5)", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b1d7ee2-2fff-4589-b100-8fafd062a056",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=div:nth-child(5) td",
+      "targets": [
+        ["css=div:nth-child(5) td", "css:finder"],
+        ["xpath=//form[@id='nuevoEstacionamientoForm']/div/div[3]/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'El vehiculo ya tiene un estacionamiento en vigor.')]", "xpath:innerText"]
+      ],
+      "value": "El vehiculo ya tiene un estacionamiento en vigor."
+    }]
+  }],
+  "suites": [{
+    "id": "c712b138-2644-4d98-8e0c-f4af21bfe1d0",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d8f922ac-0ee3-403e-be09-6d0242bc2ef4"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

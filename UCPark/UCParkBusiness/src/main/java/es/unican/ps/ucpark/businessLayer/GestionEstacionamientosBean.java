@@ -3,6 +3,7 @@ package es.unican.ps.ucpark.businessLayer;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import es.unican.ps.ucpark.daoLayer.IEstacionamientosDAOLocal;
@@ -16,6 +17,7 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.ejb.Timeout;
 import jakarta.ejb.Timer;
+import jakarta.ejb.TimerConfig;
 import jakarta.ejb.TimerService;
 
 @Stateless
@@ -52,9 +54,10 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 	 * @param vehiculosDAO DAO de vehiculos.
 	 */
 	public GestionEstacionamientosBean(IEstacionamientosDAOLocal estacionamientosDAO,
-			IVehiculosDAOLocal vehiculosDAO) {
+			IVehiculosDAOLocal vehiculosDAO, TimerService timerService) {
 		this.estacionamientosDAO = estacionamientosDAO;
 		this.vehiculosDAO = vehiculosDAO;
+		this.timerService = timerService;
 	}
 	
 	@Override
@@ -72,9 +75,10 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 		// Programacion de evento para eliminar estacionamiento en vigor
 		LocalDateTime horaFin = estacionamiento.getHoraInicio().plusMinutes(minutos);
 		
-		timerService.createSingleActionTimer(horaFin.atZone(
-				ZoneId.systemDefault()).toInstant().toEpochMilli(), null);
+		long mili1 = horaFin.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+		long mili2 = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
 		
+		timerService.createSingleActionTimer(mili1 - mili2, new TimerConfig(estacionamiento, true));
 		estacionamiento = estacionamientosDAO.creaEstacionamiento(estacionamiento);
 		vehiculo.setEstacionamientoEnVigor(estacionamiento);
 		vehiculosDAO.modificaVehiculo(vehiculo);
@@ -94,6 +98,20 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 			
 		estacionamiento.setMinutos(minutosAcumulados);
 		estacionamiento.setImporte(minutosAcumulados * PRECIO_MINUTO);
+		
+		Collection<Timer> timers = timerService.getAllTimers();
+		
+		for (Timer timer:timers) {
+			Estacionamiento aux = (Estacionamiento) timer.getInfo();
+			if (aux.equals(estacionamiento)) {
+				timer.cancel();
+				
+				long mili1 = estacionamiento.getHoraInicio().plusMinutes(estacionamiento.getMinutos()).
+						atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+				long mili2 = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+				timerService.createSingleActionTimer(mili1 - mili2, new TimerConfig(estacionamiento, true));
+			}
+		}
 		return estacionamientosDAO.modificaEstacionamiento(estacionamiento);
 	}
 	
@@ -166,10 +184,10 @@ public class GestionEstacionamientosBean implements IConsultaEstacionamientosLoc
 	
 	@Timeout
 	public void finalizarEstacionamiento(Timer timer) {
-		Vehiculo vehiculo = (Vehiculo) timer.getInfo();
-		Estacionamiento estacionamientoEnVigor = vehiculo.getEstacionamientoEnVigor();
+		Estacionamiento est = (Estacionamiento) timer.getInfo();
+		Vehiculo vehiculo = est.getVehiculoEstacionado();
 		
-		vehiculo.getHistoricoEstacionamientos().add(estacionamientoEnVigor);
+		vehiculo.getHistoricoEstacionamientos().add(est);
 		vehiculo.setEstacionamientoEnVigor(null);
 		
 		vehiculosDAO.modificaVehiculo(vehiculo);

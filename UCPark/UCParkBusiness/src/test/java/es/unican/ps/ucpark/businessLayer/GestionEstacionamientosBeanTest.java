@@ -2,6 +2,8 @@ package es.unican.ps.ucpark.businessLayer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -9,6 +11,7 @@ import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,6 +23,9 @@ import es.unican.ps.ucpark.domain.Denuncia;
 import es.unican.ps.ucpark.domain.Estacionamiento;
 import es.unican.ps.ucpark.domain.Usuario;
 import es.unican.ps.ucpark.domain.Vehiculo;
+import jakarta.ejb.Timer;
+import jakarta.ejb.TimerConfig;
+import jakarta.ejb.TimerService;
 
 /**
  * Clase de pruebas unitarias que comprueba el funcionamiento 
@@ -39,6 +45,8 @@ public class GestionEstacionamientosBeanTest {
 	// Mocks y sut
 	private IEstacionamientosDAOLocal estacionamientosMock;
 	private IVehiculosDAOLocal vehiculosMock;
+	private TimerService timerServiceMock;
+	private Timer timerMock;
 	private GestionEstacionamientosBean sut;
 	
 	/**
@@ -49,9 +57,11 @@ public class GestionEstacionamientosBeanTest {
 	public void inicializa() {
 		estacionamientosMock = mock(IEstacionamientosDAOLocal.class);
 		vehiculosMock = mock(IVehiculosDAOLocal.class);
+		timerServiceMock = mock(TimerService.class);
+		timerMock = mock(Timer.class);
 		
 		sut = new GestionEstacionamientosBean(estacionamientosMock, 
-				vehiculosMock);
+				vehiculosMock, timerServiceMock);
 	}
 	
 	/**
@@ -83,6 +93,14 @@ public class GestionEstacionamientosBeanTest {
 		
 		
 		// Definir el comportamiento
+		doNothing().when(timerMock).cancel();
+		when(timerMock.getInfo()).thenReturn(e2);
+		List<Timer> timers = new ArrayList<>();
+		timers.add(timerMock);
+		
+		when(timerServiceMock.getAllTimers()).thenReturn(timers);
+		when(timerServiceMock.createSingleActionTimer(any(Long.class), any(TimerConfig.class))).thenReturn(null);
+		
 		when(estacionamientosMock.modificaEstacionamiento(e2)).thenReturn(e2);
 		
 		// Comprobar el correcto funcionamiento del metodo
@@ -92,5 +110,10 @@ public class GestionEstacionamientosBeanTest {
 				AMPLIACION_2));
 		verify(estacionamientosMock, times(1)).modificaEstacionamiento(
 				Mockito.any(Estacionamiento.class)); // No deberia llamar a la DAO
+		verify(timerMock).cancel();
+		verify(timerMock).getInfo();
+		verify(timerServiceMock).createSingleActionTimer(any(Long.class), any(TimerConfig.class));
+		verify(timerServiceMock).getAllTimers();
+		
 	}
 }

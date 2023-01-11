@@ -94,7 +94,7 @@ public class DatosEstacionamientosTest {
 		doThrow(new PersistenceException()).when(entityManagerMock).persist(e3);
 		
 		// Comprobar el correcto funcionamiento del metodo
-		assertEquals(e2, sut.creaEstacionamiento(e1));
+		assertEquals(e2, sut.creaEstacionamiento(e1)); // Asigna ID
 		verify(entityManagerMock).persist(e1);
 		assertEquals(null, sut.creaEstacionamiento(e3));
 		verify(entityManagerMock).persist(e3);
