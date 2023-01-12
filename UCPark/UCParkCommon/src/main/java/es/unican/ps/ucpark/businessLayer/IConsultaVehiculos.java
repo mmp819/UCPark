@@ -30,4 +30,15 @@ public interface IConsultaVehiculos {
 	public Vehiculo consultaVehiculoRegistrado(String email, String matricula) 
 		throws OperacionNoValida;
 	
+	/**
+	 * Consulta matriculas de vehiculos registrados a nombre de un usuario concreto.
+	 * 
+	 * @param email Email del usuario a consultar.
+	 * 
+	 * @throws OperacionNoValida si no existe un usuario con el email indicado.
+	 * @return lista de matriculas registradas a nombre del usuario especificado.
+	 */
+	public List<String> consultaMatriculasRegistradas(String email) 
+		throws OperacionNoValida;
+	
 }

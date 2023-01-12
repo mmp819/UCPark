@@ -15,10 +15,24 @@
       <artifactId>UCParkCommon</artifactId>
       <version>1.0</version>
     </dependency>
+    
+    <dependency>
+  		<groupId>org.seleniumhq.selenium</groupId>
+  		<artifactId>selenium-java</artifactId>
+  		<version>4.0.0-alpha-3</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId> junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.12</version>
+  		<scope>test</scope>
+  	</dependency>
+  	
   </dependencies>
   
   <build>
-	<finalName>calculadoraWar</finalName>
+	<finalName>ucParkWar</finalName>
 	<plugins>
 		<!--  Plugin para archivos war, puede ser util para 
 		 	  algunos aspectos de configuración -->

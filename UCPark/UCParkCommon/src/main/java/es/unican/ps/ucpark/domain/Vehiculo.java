@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -21,9 +22,9 @@ public class Vehiculo implements Serializable {
 	@OneToOne
 	@JoinColumn(name="est_vig_fk")
 	private Estacionamiento estacionamientoEnVigor;
-	@OneToMany(mappedBy="vehiculoEstacionado")
+	@OneToMany(mappedBy="vehiculoEstacionado", fetch=FetchType.EAGER)
 	private List<Estacionamiento> historicoEstacionamientos;
-	@OneToMany(mappedBy="vehiculoDenunciado")
+	@OneToMany(mappedBy="vehiculoDenunciado", fetch=FetchType.EAGER)
 	private List<Denuncia> denuncias;
 	@ManyToOne
 	@JoinColumn(name="prop_fk")

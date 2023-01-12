@@ -4,8 +4,9 @@ import java.io.Serializable;
 
 import es.unican.ps.ucpark.businessLayer.IGestionUsuariosRemote;
 import jakarta.ejb.EJB;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 
 @SuppressWarnings("serial")
@@ -33,7 +34,11 @@ public class AutenticacionBean implements Serializable {
 		
 		if (logStatus) {
 			result = "index.xhtml";
-		} 
+		} else {
+			String mensaje = "Email y/o clave incorrectos.";
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null));
+		}
 		
 		return result;
 	}
