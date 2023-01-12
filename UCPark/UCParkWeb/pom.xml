@@ -32,7 +32,7 @@
   </dependencies>
   
   <build>
-	<finalName>calculadoraWar</finalName>
+	<finalName>ucParkWar</finalName>
 	<plugins>
 		<!--  Plugin para archivos war, puede ser util para 
 		 	  algunos aspectos de configuración -->
